@@ -87,3 +87,40 @@ A full breakdown, including tables and backtest plots, is presented in the paper
 ---
 
 
+---
+
+## 4. Origins: The Quality Equation
+
+The initial stage of this research involved a price-based signal
+
+$$
+Q = q_1 \dot{\bar{p}} + q_2 \ddot{\bar{p}} + q_3 v,
+$$
+
+where $\dot{\bar{p}}$ is smoothed momentum, $\ddot{\bar{p}}$ is acceleration, and $v$ is local volatility.  
+A stochastic optimizer was used to select the weights $(q_1,q_2,q_3)$ under penalty terms discouraging fragile or overfit parameter combinations.
+
+Although the volatility-surface model ultimately replaced this framework, many of its lessons—particularly smoothing rugged landscapes and emphasizing robustness—directly influenced the final design.
+
+---
+
+## 4. Reproducing the Pipeline
+
+1. Load daily option chains for the chosen underlying.  
+2. Fit the IV surface using the spline module.  
+3. Extract fixed-maturity slices and compute PCA.  
+4. Generate feature vectors and apply the decision rule.  
+5. Run a backtest or deploy inside QuantConnect.
+
+The implementation assumes access to option-level historical data.
+
+---
+
+## Closing Remarks
+
+This repository represents an attempt to view volatility not simply as an input to option pricing, but as a geometric object evolving on a manifold. By blending engineering optimization techniques with volatility-surface analysis, the project aims to provide an interpretable and data-driven approach to volatility trading.  
+**Readers interested in the mathematical development and empirical evaluation should refer to the full paper, which is included in the repository.**
+
+
+
+
