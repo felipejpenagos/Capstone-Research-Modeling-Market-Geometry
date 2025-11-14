@@ -63,12 +63,13 @@ In addition to PCA deltas, the model incorporates:
 These features capture both instantaneous and smoothed information about surface geometry.
 
 <div style="overflow-x: auto; white-space: nowrap;">
-  <img src="images/iv_surfaces.png" width="260" />
-  <img src="images/oosc.png" width="260" />
-  <img src="images/param_landscape.png" width="260" />
-  <img src="images/Theory.png" width="260" />
-  <img src="images/dynamic_thresholds.png" width="260" />
+  <img src="images/iv_surfaces.png" height="160" />
+  <img src="images/oosc.png" height="160" />
+  <img src="images/param_landscape.png" height="160" />
+  <img src="images/Theory.png" height="160" />
+  <img src="images/dynamic_thresholds.png" height="160" />
 </div>
+
 
 
 ### 2.4 Volatility Positioning
