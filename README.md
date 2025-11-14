@@ -1,3 +1,12 @@
+<div style="overflow-x: auto; white-space: nowrap;">
+  <img src="images/workflow.png" width="260" />
+  <img src="images/iv_surfaces.png" width="260" />
+  <img src="images/oosc.png" width="260" />
+  <img src="images/param_landscape.png" width="260" />
+  <img src="images/Theory.png" width="260" />
+  <img src="images/dynamic_thresholds.png" width="260" />
+</div>
+
 <p align="center">
   <img src="images/workflow.png" width="22%" />
   <img src="images/iv_surfaces.png" width="22%" />
