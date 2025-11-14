@@ -8,7 +8,7 @@
 This repository contains the code accompanying the research project *Modeling Market Geometry: An Engineering Approach to Implied Volatility in Options*.  
 The purpose of this README is to give a concise overview of the project, its motivation, and how the methodology is organized. It is not a substitute for the full paper; instead, it provides enough structure for someone who will not read the paper to understand what the project is doing and why.
 
----
+--- 
 
 ## 1. Project Context and Motivation
 
@@ -40,6 +40,8 @@ where smoothing penalties suppress irregularities arising from bid/ask noise or 
 To study how the IV surface evolves, daily slices at fixed maturities are differenced and stacked. Principal Component Analysis (PCA) is then applied to these deformations.  
 The first three components consistently correspond to:
 
+  <img src="images/Theory.png" height="160" />
+  
 - Level shifts  
 - Skew (tilt)  
 - Smile or curvature changes  
@@ -64,14 +66,9 @@ These features capture both instantaneous and smoothed information about surface
 
 <div style="overflow-x: auto; white-space: nowrap;">
   <img src="images/iv_surfaces.png" height="160" />
-  <img src="images/oosc.png" height="160" />
   <img src="images/param_landscape.png" height="160" />
-  <img src="images/Theory.png" height="160" />
-  <img src="images/dynamic_thresholds.png" height="160" />
 </div>
-
-
-
+ 
 ### 2.4 Volatility Positioning
 
 The strategy trades **delta-neutral option structures**:
@@ -84,7 +81,27 @@ The aim is not to forecast direction, but to express a clean view on volatility 
 
 ---
 
-## 3. Summary of Results
+## 3. Origins: The Quality Equation
+
+The initial stage of this research involved a price-based signal
+
+$$
+Q = q_1 \dot{\bar{p}} + q_2 \ddot{\bar{p}} + q_3 v,
+$$
+
+where $\dot{\bar{p}}$ is smoothed momentum, $\ddot{\bar{p}}$ is acceleration, and $v$ is local volatility.  
+A stochastic optimizer was used to select the weights $(q_1,q_2,q_3)$ under penalty terms discouraging fragile or overfit parameter combinations.
+
+Although the volatility-surface model ultimately replaced this framework, many of its lessons—particularly smoothing rugged landscapes and emphasizing robustness—directly influenced the final design.
+
+<div style="overflow-x: auto; white-space: nowrap;">
+  <img src="images/oosc.png" height="160" />
+  <img src="images/dynamic_thresholds.png" height="160" />
+</div>
+
+---
+
+## 4. Summary of Results
 
 The strategy was tested across multiple regimes:
 
@@ -97,24 +114,6 @@ Performance metrics include annualized return, Sharpe ratio, drawdown, and PSR (
 These results show that the model tends to perform well during sustained volatility regimes, while single-day shock events remain challenging.
 
 A full breakdown, including tables and backtest plots, is presented in the paper.
-
----
-
-
----
-
-## 4. Origins: The Quality Equation
-
-The initial stage of this research involved a price-based signal
-
-$$
-Q = q_1 \dot{\bar{p}} + q_2 \ddot{\bar{p}} + q_3 v,
-$$
-
-where $\dot{\bar{p}}$ is smoothed momentum, $\ddot{\bar{p}}$ is acceleration, and $v$ is local volatility.  
-A stochastic optimizer was used to select the weights $(q_1,q_2,q_3)$ under penalty terms discouraging fragile or overfit parameter combinations.
-
-Although the volatility-surface model ultimately replaced this framework, many of its lessons—particularly smoothing rugged landscapes and emphasizing robustness—directly influenced the final design.
 
 ---
 
